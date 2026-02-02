@@ -60,59 +60,56 @@
     <div class="page-container" id="catalogContainer">
         
         <!-- PÁGINA 1: PORTADA -->
-        <div id="page1" class="page active-page">
-   <div class="h-2/5 relative flex items-center justify-center overflow-hidden">
-    
-    <img src="https://lh3.googleusercontent.com/u/0/d/1hyiZjQzCPIQUTdaBVYhP6Q2kZBUnbg15" 
-         alt="Fondo Portada" 
-         class="absolute inset-0 w-full h-full object-cover">
+       <div id="page1" class="page active-page">
+    <div class="h-2/5 relative flex items-center justify-center overflow-hidden">
+        <img src="https://lh3.googleusercontent.com/u/0/d/1hyiZjQzCPIQUTdaBVYhP6Q2kZBUnbg15" 
+             alt="Fondo Portada" 
+             class="absolute inset-0 w-full h-full object-cover">
 
-    <div class="absolute inset-0 bg-[#0f2f76]/40 mix-blend-multiply"></div>
+        <div class="absolute inset-0 bg-[#0f2f76]/40 mix-blend-multiply"></div>
 
-    <div class="z-10 text-center">
-        <div class="bg-white p-4 rounded-3xl shadow-lg mb-4 transform -rotate-3 flex items-center justify-center">
-            <img src="https://lh3.googleusercontent.com/u/0/d/1HChOqAbmrJrIhgbDm6j4VfwdrDOAsdk1" 
-                 alt="Logo PromoTV" 
-                 class="h-20 w-auto object-contain">
+        <div class="z-10 text-center">
+            <div class="bg-white p-4 rounded-3xl shadow-lg transform -rotate-3 flex items-center justify-center">
+                <img src="https://lh3.googleusercontent.com/u/0/d/1HChOqAbmrJrIhgbDm6j4VfwdrDOAsdk1" 
+                     alt="Logo PromoTV" 
+                     class="h-20 w-auto object-contain">
+            </div>
         </div>
     </div>
-</div>
-</div>
-            </div>
 
-            <div class="flex-1 flex flex-col justify-center px-10">
-                <h2 class="text-4xl font-bold leading-tight mb-4 text-black">
-                    CATÁLOGO DE <br />
-                    <span class="text-primary uppercase">Productos</span>
-                </h2>
-                <div class="w-16 h-2 mb-6 bg-secondary"></div>
-                <p class="text-gray-600 text-sm mb-10">
-                    Descubre nuestra selección exclusiva de artículos de tendencia con envíos garantizados.
-                </p>
+    <div class="flex-1 flex flex-col justify-center px-10 bg-white">
+        <h2 class="text-4xl font-bold leading-tight mb-4 text-black">
+            CATÁLOGO DE <br />
+            <span class="text-primary uppercase">Productos</span>
+        </h2>
+        <div class="w-16 h-2 mb-6 bg-secondary"></div>
+        <p class="text-gray-600 text-sm mb-10">
+            Descubre nuestra selección exclusiva de artículos de tendencia con envíos garantizados.
+        </p>
 
-                <div class="flex flex-col gap-2">
-                    <span class="text-[10px] uppercase tracking-widest font-bold text-gray-400">¿En qué país te encuentras?:</span>
-                    <div class="relative">
-                        <select id="countrySelect" class="w-full bg-gray-100 p-4 rounded-2xl font-bold appearance-none border-none outline-none cursor-pointer text-primary">
-                            <option value="Ecuador">ECUADOR</option>
-                            <option value="Perú">PERÚ</option>
-                            <option value="Colombia">COLOMBIA</option>
-                            <option value="Bolivia">BOLIVIA</option>
-                            <option value="Panamá">PANAMÁ</option>
-                            <option value="Argentina">ARGENTINA</option>
-                            <option value="México">MÉXICO</option>
-                        </select>
-                        <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-primary">
-                            <i data-lucide="chevron-down" size="18"></i>
-                        </div>
-                    </div>
+        <div class="flex flex-col gap-2">
+            <span class="text-[10px] uppercase tracking-widest font-bold text-gray-400">¿En qué país te encuentras?:</span>
+            <div class="relative">
+                <select id="countrySelect" class="w-full bg-gray-100 p-4 rounded-2xl font-bold appearance-none border-none outline-none cursor-pointer text-primary">
+                    <option value="Ecuador">ECUADOR</option>
+                    <option value="Perú">PERÚ</option>
+                    <option value="Colombia">COLOMBIA</option>
+                    <option value="Bolivia">BOLIVIA</option>
+                    <option value="Panamá">PANAMÁ</option>
+                    <option value="Argentina">ARGENTINA</option>
+                    <option value="México">MÉXICO</option>
+                </select>
+                <div class="absolute right-4 top-1/2 -translate-y-1/2 pointer-events-none text-primary">
+                    <i data-lucide="chevron-down" size="18"></i>
                 </div>
             </div>
-
-            <div class="h-12 w-full flex items-center justify-center font-bold text-xs bg-secondary text-primary">
-                EDICIÓN EXCLUSIVA 2026
-            </div>
         </div>
+    </div>
+
+    <div class="h-12 w-full flex items-center justify-center font-bold text-xs bg-secondary text-primary">
+        EDICIÓN EXCLUSIVA 2026
+    </div>
+</div>
 
         <!-- PÁGINA 2: PRODUCTOS -->
         <div id="page2" class="page p-6 overflow-y-auto">
