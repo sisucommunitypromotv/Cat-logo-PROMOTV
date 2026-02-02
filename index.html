@@ -1,0 +1,279 @@
+import React, { useState } from 'react';
+import { ShoppingCart, Phone, Instagram, Facebook, Globe, MessageCircle, ChevronRight, ChevronLeft, LayoutGrid } from 'lucide-react';
+
+const App = () => {
+  const [currentPage, setCurrentPage] = useState(1);
+  const [selectedCountry, setSelectedCountry] = useState('Ecuador');
+
+  const countries = ['Ecuador', 'Perú', 'Colombia', 'Bolivia', 'Panamá', 'Argentina', 'México'];
+
+  const products = [
+    {
+      id: 1,
+      name: 'Olla de Presión UCCLIFE',
+      category: 'Hogar y Cocina',
+      price: '$59.99',
+      image: 'https://images.unsplash.com/photo-1584990344321-4d9241517861?auto=format&fit=crop&q=80&w=400',
+      description: 'Tecnología de cocción rápida y segura para tu familia.'
+    },
+    {
+      id: 2,
+      name: 'Magnesio Premium Plus',
+      category: 'Salud y Bienestar',
+      price: '$24.50',
+      image: 'https://images.unsplash.com/photo-1584017911766-d451b3d0e843?auto=format&fit=crop&q=80&w=400',
+      description: 'Suplemento esencial para energía y recuperación muscular.'
+    },
+    {
+      id: 3,
+      name: 'Aspiradora Robot Inteligente',
+      category: 'Tecnología',
+      price: '$129.00',
+      image: 'https://images.unsplash.com/photo-1518314916381-77a37c2a49ae?auto=format&fit=crop&q=80&w=400',
+      description: 'Limpieza automática programable desde tu celular.'
+    },
+    {
+      id: 4,
+      name: 'Colágeno Hidrolizado Gold',
+      category: 'Salud y Bienestar',
+      price: '$32.00',
+      image: 'https://images.unsplash.com/photo-1611073113567-cc0f69a572a1?auto=format&fit=crop&q=80&w=400',
+      description: 'Piel joven y articulaciones fuertes con una toma diaria.'
+    }
+  ];
+
+  // Estilos constantes
+  const colors = {
+    primary: '#0f2f76', // Azul Oscuro
+    secondary: '#feac1f', // Naranja/Amarillo PromoTV
+    white: '#ffffff',
+    text: '#000000',
+  };
+
+  return (
+    <div className="min-h-screen bg-gray-100 flex flex-col items-center py-10 font-sans" style={{ fontFamily: "'Poppins', sans-serif" }}>
+      {/* Google Fonts Import */}
+      <style>
+        {`@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap');`}
+      </style>
+
+      {/* Selector de Navegación (Solo para demo) */}
+      <div className="fixed bottom-5 z-50 flex gap-4 bg-white p-3 rounded-full shadow-2xl border border-gray-200">
+        <button 
+          onClick={() => setCurrentPage(Math.max(1, currentPage - 1))}
+          className="p-2 rounded-full hover:bg-gray-100 transition"
+        >
+          <ChevronLeft color={colors.primary} />
+        </button>
+        <div className="flex items-center px-4 font-bold text-sm" style={{ color: colors.primary }}>
+          Página {currentPage} de 3
+        </div>
+        <button 
+          onClick={() => setCurrentPage(Math.min(3, currentPage + 1))}
+          className="p-2 rounded-full hover:bg-gray-100 transition"
+        >
+          <ChevronRight color={colors.primary} />
+        </button>
+      </div>
+
+      {/* Contenedor Formato Vertical A4 (Proporción aproximada) */}
+      <div 
+        className="bg-white shadow-2xl overflow-hidden transition-all duration-500 ease-in-out relative"
+        style={{ 
+          width: 'min(90vw, 450px)', 
+          height: 'min(140vw, 750px)',
+          borderRadius: '30px'
+        }}
+      >
+        
+        {/* --- PÁGINA 1: PORTADA --- */}
+        {currentPage === 1 && (
+          <div className="h-full flex flex-col">
+            {/* Decoración superior */}
+            <div 
+              className="h-2/5 relative flex items-center justify-center"
+              style={{ backgroundColor: colors.primary }}
+            >
+              <div 
+                className="absolute bottom-[-40px] right-[-40px] w-64 h-64 rounded-full opacity-20"
+                style={{ backgroundColor: colors.secondary }}
+              ></div>
+              <div className="z-10 text-center">
+                 <div className="bg-white p-6 rounded-3xl shadow-lg mb-4 transform -rotate-3">
+                    <h1 className="text-4xl font-black italic tracking-tighter" style={{ color: colors.primary }}>
+                      PROMO<span style={{ color: colors.secondary }}>TV</span>
+                    </h1>
+                 </div>
+              </div>
+            </div>
+
+            <div className="flex-1 flex flex-col justify-center px-10">
+              <h2 className="text-4xl font-bold leading-tight mb-4" style={{ color: colors.text }}>
+                CATÁLOGO DE <br />
+                <span style={{ color: colors.primary }}>PRODUCTOS</span>
+              </h2>
+              
+              <div className="w-16 h-2 mb-6" style={{ backgroundColor: colors.secondary }}></div>
+
+              <p className="text-gray-600 text-sm mb-10">
+                Descubre nuestra selección exclusiva de artículos de tendencia con envíos garantizados.
+              </p>
+
+              <div className="flex flex-col gap-2">
+                <span className="text-[10px] uppercase tracking-widest font-bold text-gray-400">Dirigido a:</span>
+                <select 
+                  value={selectedCountry}
+                  onChange={(e) => setSelectedCountry(e.target.value)}
+                  className="bg-gray-100 p-4 rounded-2xl font-bold appearance-none border-none outline-none cursor-pointer"
+                  style={{ color: colors.primary }}
+                >
+                  {countries.map(c => <option key={c} value={c}>{c.toUpperCase()}</option>)}
+                </select>
+              </div>
+            </div>
+
+            <div 
+              className="h-12 w-full flex items-center justify-center font-bold text-xs"
+              style={{ backgroundColor: colors.secondary, color: colors.primary }}
+            >
+              EDICIÓN EXCLUSIVA 2024
+            </div>
+          </div>
+        )}
+
+        {/* --- PÁGINA 2: PRODUCTOS --- */}
+        {currentPage === 2 && (
+          <div className="h-full flex flex-col p-6 overflow-y-auto">
+            <div className="flex justify-between items-center mb-6">
+              <div>
+                <h3 className="text-2xl font-bold" style={{ color: colors.primary }}>Tendencias</h3>
+                <p className="text-xs text-gray-500">Selección del mes en {selectedCountry}</p>
+              </div>
+              <LayoutGrid size={24} color={colors.secondary} />
+            </div>
+
+            <div className="grid grid-cols-1 gap-6">
+              {products.map((product) => (
+                <div 
+                  key={product.id}
+                  className="flex gap-4 p-3 rounded-[20px] bg-gray-50 border border-gray-100 hover:shadow-md transition"
+                >
+                  <div className="w-24 h-24 rounded-2xl overflow-hidden bg-white flex-shrink-0">
+                    <img src={product.image} alt={product.name} className="w-full h-full object-cover" />
+                  </div>
+                  <div className="flex flex-col justify-center flex-1">
+                    <span className="text-[8px] font-bold uppercase tracking-wider" style={{ color: colors.secondary }}>{product.category}</span>
+                    <h4 className="font-bold text-sm leading-tight mb-1" style={{ color: colors.text }}>{product.name}</h4>
+                    <p className="text-[10px] text-gray-500 line-clamp-1 mb-2">{product.description}</p>
+                    <div className="flex justify-between items-center">
+                      <span className="font-bold text-lg" style={{ color: colors.primary }}>{product.price}</span>
+                      <button 
+                        className="px-3 py-1 rounded-full text-[10px] font-bold text-white flex items-center gap-1"
+                        style={{ backgroundColor: colors.primary }}
+                      >
+                        PEDIR <ShoppingCart size={10} />
+                      </button>
+                    </div>
+                  </div>
+                </div>
+              ))}
+            </div>
+
+            <div className="mt-8 p-4 rounded-3xl text-center" style={{ backgroundColor: colors.primary }}>
+               <p className="text-white text-xs">Paga al recibir en la puerta de tu casa</p>
+            </div>
+          </div>
+        )}
+
+        {/* --- PÁGINA 3: SOCIAL MEDIA --- */}
+        {currentPage === 3 && (
+          <div className="h-full flex flex-col">
+            <div className="flex-1 flex flex-col items-center justify-center px-10 text-center">
+              <div 
+                className="w-20 h-20 rounded-full flex items-center justify-center mb-6"
+                style={{ backgroundColor: colors.secondary }}
+              >
+                <MessageCircle size={40} color={colors.primary} />
+              </div>
+              
+              <h3 className="text-3xl font-bold mb-2" style={{ color: colors.primary }}>¡Contáctanos!</h3>
+              <p className="text-gray-500 text-sm mb-8">Estamos listos para procesar tu pedido y resolver tus dudas.</p>
+
+              <div className="w-full space-y-4">
+                {/* Botones de Redes Sociales */}
+                <a href="#" className="flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gray-100 transition group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-2 bg-green-100 rounded-xl group-hover:bg-green-200 transition">
+                      <Phone size={20} className="text-green-600" />
+                    </div>
+                    <span className="font-bold text-gray-700">WhatsApp Ventas</span>
+                  </div>
+                  <ChevronRight size={18} className="text-gray-400" />
+                </a>
+
+                <a href="#" className="flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gray-100 transition group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-2 bg-pink-100 rounded-xl group-hover:bg-pink-200 transition">
+                      <Instagram size={20} className="text-pink-600" />
+                    </div>
+                    <span className="font-bold text-gray-700">@promotv_oficial</span>
+                  </div>
+                  <ChevronRight size={18} className="text-gray-400" />
+                </a>
+
+                <a href="#" className="flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gray-100 transition group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-2 bg-blue-100 rounded-xl group-hover:bg-blue-200 transition">
+                      <Facebook size={20} className="text-blue-600" />
+                    </div>
+                    <span className="font-bold text-gray-700">PromoTV Marketing</span>
+                  </div>
+                  <ChevronRight size={18} className="text-gray-400" />
+                </a>
+
+                <a href="#" className="flex items-center justify-between p-4 rounded-2xl bg-gray-50 hover:bg-gray-100 transition group">
+                  <div className="flex items-center gap-4">
+                    <div className="p-2 bg-gray-200 rounded-xl group-hover:bg-gray-300 transition">
+                      <Globe size={20} className="text-gray-700" />
+                    </div>
+                    <span className="font-bold text-gray-700">www.promotvcorp.com</span>
+                  </div>
+                  <ChevronRight size={18} className="text-gray-400" />
+                </a>
+              </div>
+            </div>
+
+            <div 
+              className="p-10 flex flex-col items-center"
+              style={{ backgroundColor: colors.primary }}
+            >
+              <div className="bg-white px-4 py-2 rounded-xl mb-4">
+                <h1 className="text-xl font-black italic tracking-tighter" style={{ color: colors.primary }}>
+                  PROMO<span style={{ color: colors.secondary }}>TV</span>
+                </h1>
+              </div>
+              <p className="text-white text-[10px] opacity-70">© 2024 PromoTV Corp. Todos los derechos reservados.</p>
+            </div>
+          </div>
+        )}
+
+      </div>
+
+      {/* Indicadores de página */}
+      <div className="mt-6 flex gap-2">
+        {[1, 2, 3].map(p => (
+          <div 
+            key={p} 
+            className="w-2 h-2 rounded-full transition-all"
+            style={{ 
+              backgroundColor: currentPage === p ? colors.secondary : '#cbd5e1',
+              width: currentPage === p ? '20px' : '8px'
+            }}
+          ></div>
+        ))}
+      </div>
+    </div>
+  );
+};
+
+export default App;
